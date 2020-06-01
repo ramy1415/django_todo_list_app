@@ -6,5 +6,6 @@ app_name = 'Projects'
 
 urlpatterns = [
     path('', views.home_page, name='home_page'),
-    path('additem', views.add_todo_item, name='home_page'),
+    path('additem', views.add_todo_item, name='add_todo_item'),
+    path('togglestatus', views.toggle_status, name='toggle_status'),
 ]

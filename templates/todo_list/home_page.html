@@ -15,7 +15,7 @@
 <div class="items">
     
     {% for item in items %}
-        {% include 'partials/todo_item.html' with item_desc=item.description %}
+        {% include 'partials/todo_item.html' with item_desc=item.description is_done=item.is_done %}
     {% endfor %}
 
 </div>
