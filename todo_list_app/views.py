@@ -53,6 +53,7 @@ def toggle_status(request):
         # if item was not found return error message
         return JsonResponse(status=404, data={'message':"Couldn't update"})
     else:
+        # changing item status when pressed
         item.is_done = not item.is_done
         item.save()
         return JsonResponse({'id': item.id ,'message':"updated item"})
