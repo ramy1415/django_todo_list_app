@@ -26,16 +26,16 @@ function item_clicked(btn,id,title) {
 }
 
 // getting new html element for the new added item
-function get_item_element(id,item_description) {
+function get_item_element(id,item_description,title) {
     return $(`
-            <div onclick="clicked(this,'${id}')">
+            <div onclick="item_clicked(this,'${id}','${title}')">
                 <h1> <i class="far fa-square"></i> ${item_description}</h1>
             </div>
             `)
 }
 
 // ajax function adding new todo item in database
-function add_todo_item(event) {
+function add_todo_item(event,title) {
     event.preventDefault()
     const item_description = document.getElementById('description').value
     $.ajax({
@@ -45,7 +45,7 @@ function add_todo_item(event) {
         dataType:"json",
         success:function(result){ 
             const {id} = result
-            const new_item = get_item_element(id,item_description)
+            const new_item = get_item_element(id,item_description,title)
             $('.items').append(new_item)
             alert(result.message)
         },
