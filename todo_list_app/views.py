@@ -5,9 +5,26 @@ from django.core.serializers.json import DjangoJSONEncoder
 
 
 # Create your views here.
+
+# show All items
+# GET --> /
 def home_page(request):
     items = Item.objects.all()
-    context = {'items':items}
+    context = {'items':items, 'title' : 'All Items' }
+    return render(request, "todo_list/home_page.html",context)
+
+# show done items only
+# GET --> /showdone
+def show_done(request):
+    items = Item.objects.filter(is_done=True)
+    context = {'items':items, 'title' : 'Done Items'}
+    return render(request, "todo_list/home_page.html",context)
+
+# show active items only
+# GET --> /showactive
+def show_active(request):
+    items = Item.objects.filter(is_done=False)
+    context = {'items':items, 'title' : 'Active Items'}
     return render(request, "todo_list/home_page.html",context)
 
 #Ajax add new todo item

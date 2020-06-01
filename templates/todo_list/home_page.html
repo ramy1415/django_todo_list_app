@@ -4,13 +4,15 @@
 {% block 'additional_includes' %}
     <script src="{% static 'style/js/home.js'%}"></script>
 {% endblock %}
-<h1>todo home page</h1>
+<h1>{{title}}</h1>
+{% if title == "All Items" %}
 <form>
     {% csrf_token %}
     <label for="description">New Item: </label>
     <input id="description" type="text" name="description">
     <input type="submit" onclick="add_todo_item(event)" value="Add Item">
 </form>
+{% endif %}
 
 <div class="items">
     
