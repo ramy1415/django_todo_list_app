@@ -4,15 +4,16 @@
 {% block 'additional_includes' %}
     <script src="{% static 'style/js/home.js'%}"></script>
 {% endblock %}
-<h1>{{title}}</h1>
+<h1 class="text-danger text-center">{{title}}</h1>
+
+<!-- show form to add items if in all view -->
 {% if title == "All Items" %}
-<form>
-    {% csrf_token %}
-    <label for="description">New Item: </label>
-    <input id="description" type="text" name="description">
-    <input type="submit" onclick="add_todo_item(event)" value="Add Item">
-</form>
+    {% include 'partials/form.html'%}
 {% endif %}
+
+<!-- navigation links -->
+{% include 'partials/links.html'%}
+
 
 <div class="items">
     
